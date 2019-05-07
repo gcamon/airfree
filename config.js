@@ -5,6 +5,8 @@ var pathExp = require("path");
 var multer = require('multer');
 var bodyParser = require('body-parser');
 //var router = express.Router();
+var mongoose = require('mongoose');
+var User = mongoose.model("User");
 var session = require('express-session');
 var passport = require('passport');
 var flash = require('connect-flash');
@@ -45,7 +47,7 @@ module.exports = function(app) {
 	app.use(bodyParser.json());
 
 	
-	app.set('views', __dirname + '/views');
+	app.set('views', __dirname + '/ui-views');
 	app.set('view engine', 'ejs');
 
 	passport.serializeUser(function(user, done) {   
@@ -53,7 +55,7 @@ module.exports = function(app) {
 	});
 
 	passport.deserializeUser(function(id, done) {
-		model.user.findById(id, function(err, user) {		
+		User.findById(id, function(err, user) {		
 			done(err, user);				
 		});
 	});

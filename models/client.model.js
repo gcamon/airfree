@@ -19,7 +19,17 @@ var ClientSchema = new Schema ({
         ref: 'Transaction'
     }],
 
+    country: {
+        type: String,
+        default: "Nigeria"
+    },
+
     phone: {
+        type: String,
+        default: ""
+    },
+
+    rc_number: {
         type: String,
         default: ""
     },

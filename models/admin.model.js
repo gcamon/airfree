@@ -19,19 +19,25 @@ var AdminSchema = new Schema ({
         default: ""
     },
 
+    transactions: [{
+        type: String,
+        ref: 'Transaction'
+    }],
+
     email: {
         type: String,
         default: ""
-    },
-
-    city: {
-        type: String,
     },
 
     country: {
         type: String,
         default: "Nigeria"
     },
+
+    city: {
+        type: String,
+    },
+
 
     address: {
         type: String,

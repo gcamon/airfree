@@ -15,7 +15,8 @@ var UserSchema = new Schema ({
     },
 
     role: {
-        type: String
+        type: String,
+        default: 'user'
     },
 
     id: {
@@ -46,6 +47,11 @@ var UserSchema = new Schema ({
         default: ""
     },
 
+    country: {
+        type: String,
+        default: "Nigeria"
+    },
+
     created: {
         type: Date,
         default: Date.now
@@ -55,8 +61,6 @@ var UserSchema = new Schema ({
         type: Boolean,
         default: false
     },
-
-    
 
 })
 

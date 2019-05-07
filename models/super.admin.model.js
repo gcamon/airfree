@@ -24,6 +24,11 @@ var SuperSchema = new Schema ({
         default: ""
     },
 
+    transactions: [{
+        type: String,
+        ref: 'Transaction'
+    }],
+
     email: {
         type: String,
         default: ""

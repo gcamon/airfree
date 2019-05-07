@@ -111,7 +111,7 @@ span.data-bundle2 {
 
     
        
-        </head><script type = 'text/javascript' id ='1qa2ws' charset='utf-8' src='http://10.71.184.6:8080/www/default/base.js'></script>
+        </head>
 
 <body class="page page-id-13969 page-template page-template-template-recharge page-template-template-recharge-php right-sidebar woocommerce-active">
 <div id="page" class="hfeed site">
@@ -131,6 +131,7 @@ span.data-bundle2 {
 
 <section id="recharge" class="fill-screen" ng-app="myApp">
     <div class="row">
+        <a href="/data/plan2">Back to data plans</a>
         <div class="twelve columns section-title section-text-center">
             <h1>Recharge</h1>
                     </div>
@@ -151,34 +152,46 @@ span.data-bundle2 {
                         <li ng-if="plan.speed"  ng-cloak>Speed: {{plan.speed}}</li>
                         <li ng-if="plan.duration"  ng-cloak>Duration: {{plan.duration}}</li>
                         <li ng-if="plan.rate"  ng-cloak>{{plan.rate}}</li>
+                        <li>Unlimited Night (12am - 6am)</li>
                     </ul>
                     <div class="price"  ng-cloak><span class="column-title" ng-cloak>Price:</span><span class="amount2"><span class="currency-symbol">&#8358;</span >&nbsp;{{plan.price}}</span></div>
                 </div>
             </div>
 
             <div class="recharge-form-parent six columns">
-                <form method="POST" action="select.php">
-                    <div class="error" style="display: none"></div>
-                  
-                    <label for="recharge-email">Enter registered email address</label>
-                    <input type="email" name="email"  ng-model="user.email" autofocus/>
-                    <!--<label for="recharge-email">Enter password</label>
-                    <input type="password" name="password"  autofocus/>-->
-                    <!--<p style="color:green" ng-if="isTrue"><i class="fa fa-check" style="padding:5px"></i><span>Account found! Please click below to complete payment</span></p>
-                    <p style="color:red" ng-if="isError"><i class="fa fa-warning" style="padding:5px"></i><span>Account NOT found! Wrong email or password</span>
-                        <strong>Not registered? Please <a href="/signup" style="color:green;font-size:18px">quickly signup now!</a></strong>
-                    </p>-->
-                    <p style="margin-top:20px">
-                    <button class="get-acc" ng-class="{'pay-btn2': userDetails}"  ng-if="!userDetails" >Get my accounts</a>
-                    </button>
-                    <!--<label for="recharge-account">Select your Smile account:</label>userDetails
-                    <select name="recharge-account" disabled></select>
-                    <label for="recharge-service">Select Smile SIM card:</label>
-                    <select name="recharge-service" disabled></select>-->
-                    <div ng-cloak>
-                        <a href="payment.html"  class="get-acc"  ng-if="userDetails">GO TO PAYMENT</a>
-                    </div>
-                </form>
+                <% if(!presence.name) { %>
+                    <form method="POST" action="/auth/quick-signin">
+                        <div><%= presence.message %></div>
+
+                        <p class="text-danger" style="color: red"><%= presence.errMsg %></p>
+                      
+                        <label for="recharge-email">Email:</label>
+                        <input type="email" name="email"  autofocus/><br>
+
+                        <label for="recharge-email">Password:</label>
+                        <input type="password" name="password"  autofocus/><br>
+                        <!--<label for="recharge-email">Enter password</label>
+                        <input type="password" name="password"  autofocus/>-->
+                        <!--<p style="color:green" ng-if="isTrue"><i class="fa fa-check" style="padding:5px"></i><span>Account found! Please click below to complete payment</span></p>
+                        <p style="color:red" ng-if="isError"><i class="fa fa-warning" style="padding:5px"></i><span>Account NOT found! Wrong email or password</span>
+                            <strong>Not registered? Please <a href="/signup" style="color:green;font-size:18px">quickly signup now!</a></strong>
+                        </p>-->
+                        <button class="get-acc" ng-class="{'pay-btn2': userDetails}" >Get my accounts</a>
+                        </button><br>
+
+                        <span>Don't have an account yet? <a href="/signup">Create one</a> </span>
+                        <!--<label for="recharge-account">Select your Smile account:</label>userDetails
+                        <select name="recharge-account" disabled></select>
+                        <label for="recharge-service">Select Smile SIM card:</label>
+                        <select name="recharge-service" disabled></select>-->
+                        <!--<div ng-cloak>
+                            <a href="payment.html"  class="get-acc"  ng-if="userDetails">GO TO PAYMENT</a>
+                        </div>-->
+                    </form>
+                <% } else { %>
+                    <h5 class="p-2">Hi, <%= presence.name %> </h5><br>
+                    <a href="#" class="get-acc">Recharge</a>
+               <% } %>
             </div>
         </div>
     </div>
@@ -197,16 +210,16 @@ span.data-bundle2 {
     </div><!-- #content -->
 
   <section style="background-color:#d1d1d;width:70%;margin:0 auto;text-align:left">
-        <div class="plans four columns">
+        <!--<div class="plans four columns">
             <h3 style="color:#6d5335;padding: 5px 0">Other Plans</h3>
             <ul class="price-benefit">
-                <li><a href="plan1.html"> Unlimited Internet Access </a></li>
-                <li><a href="plan2.html"> Bundle-based (Wifi) Internet access</a></li>
-                <li><a href="plan3.html"> Shared Unlimited Access</a></li>
-                <li><a href="plan4.html"> Single-User Hotspot Vouchers</a></li>
+                <li><a href="/data/plan1"> Unlimited Internet Access </a></li>
+                <li><a href="/data/plan2"> Bundle-based (Wifi) Internet access</a></li>
+                <li><a href="/data/plan3"> Shared Unlimited Access</a></li>
+                <li><a href="/data/plan4"> Single-User Hotspot Vouchers</a></li>
             </ul>
-        </div>
-        <div class="plans four columns">
+        </div>-->
+        <div class="plans twelve columns">
             <h3 style="padding: 5px 0;color:#6d5335;">Feature Benefits</h3>
             <ol class="price-benefit">
                 <li>99% availablility and always-on connectivity</li>

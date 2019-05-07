@@ -9,16 +9,16 @@ var mongoose = require('mongoose'),
 
 
 var TransactionSchema = new Schema ({
-    name: {
+    user: {
         type: String,
-        default: ""
+        ref: "Client"
     },
 
     referenceId: {
         type: String
     },
 
-    Amount: {
+    amount: {
         type: Number,
         default: 0
     },
@@ -35,7 +35,7 @@ var TransactionSchema = new Schema ({
 
     plan: {
         type: String,
-        default: ""
+        ref: "Plan"
     },
 
     date: {
@@ -47,7 +47,11 @@ var TransactionSchema = new Schema ({
         type: Boolean,
         default: false
     },
-
+    
+    user_id: {
+        type: String,
+        default: ""
+    }
 
 })
 

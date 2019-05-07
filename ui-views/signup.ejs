@@ -1,0 +1,145 @@
+
+<!DOCTYPE html /assets "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+    <html ng-app="myApp">
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1.0">
+            <title>Airfree Technologies Limited</title>
+             
+
+              <link rel="stylesheet" media="all" href="/assets/adapter-css/base.css" type="text/css" /> 
+            <link rel="stylesheet" media="all" href="/assets/adapter-css/layout.css" type="text/css" /> 
+            <link rel="stylesheet" media="all" href="/assets/adapter-css/skeleton.css" type="text/css" />
+            <link rel="stylesheet" media="all" href="/assets/adapter-css/fonts.css" type="text/css" /> 
+
+
+            
+            
+           <!-- <script type="text/javascript" src="https://smile.com.ng/scp/js/jquery.latest.js"></script>
+            <script type="text/javascript" src="https://smile.com.ng/scp/js/jquery-ui.js"></script>-->
+            <link rel="stylesheet" href="/assets/adapter-css/jquery-ui.css" type="text/css" /> 
+
+               
+            <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap/bootstrap.css"><!-- to be edited for php platform -->
+            <style>
+
+                body{
+                    background-image:url(https://smile.com.ng/scp/images/bg.jpg);
+                    background-repeat:no-repeat;
+                    background-position: center;
+                }
+
+               .selected {
+                    background-color: grey;
+                    color:#fff;
+                }
+
+                .btn-select {
+                    padding:10px; 
+                    background-color:inherit;
+                    color:#000;
+                    border:none;
+                    border-radius: 5px;
+                }
+
+            </style>
+
+            <script type='text/javascript' src='/assets/js/angular-source.js'></script> 
+        
+        </head>
+        <body ng-controller="signupController">    
+
+            <div style="width: 40%;margin: 20px auto;">
+
+            <div><font style="font-size:22px; font-weight: bold;">Welcome to Airfree Technologies Limited</font></div><br>
+                
+                
+            <div style="line-height:35px;background-color: transparent;padding: 10px;box-shadow: 2px 5px 10px rgba(0,0,0,0.5);">
+                <div>
+                     
+
+                    
+                    <h4>Sign Up</h4>
+
+                    <form id="loginform" method ="POST" action="/auth/register" >
+                        <% if(role) { %>                        
+                        <input type="text" name="role" value="<%= role %>" class="form-control" style="visibility: hidden;"/>
+                        <% } %>
+                        <div>
+                        <label>Names (Personal or Business):</label><br>
+                        <input type="text" name="name"  placeholder="Person or Business name" class="form-control" required/>
+                        </div>
+                        <!--<div ng-if="isPrivate == true">
+                        <label>Last Name</label>                        
+                        <input type="text" name="lastname"  placeholder="Last name" size="30" maxlength="50" required/>
+                        </div>-->
+                       
+                         <div>
+                         <label>RC number (if business):</label><br>
+                          <input type="number" name="rc_number"  placeholder="RC number" class="form-control" />
+                         </div>
+                         <div>
+                          <label>Address:</label><br>
+                         <input type="text" name="address"  placeholder="Address" class="form-control" required />
+                         </div>
+                         <div>
+                          <label>City:</label><br>
+                         <input type="text" name="city"  placeholder="City" class="form-control" required />
+                         </div>
+                         <div>
+                        <label>Phone Number:</label><br>
+                        <input type="text" name="phone"  placeholder="(080*******)" class="form-control" required />
+                        </div>
+                        <div>
+                        <label>Email:</label><br>
+                        <input type="email" name="email"  placeholder="Email" class="form-control" required />
+                        </div>                    
+                        <!--<small>{{checkUser}}</small>--> 
+                          <div>                   
+                        <label>Password:</label><br>
+                        <input type="password" name="password"  placeholder="Password" class="form-control" required/>
+                        </div>
+                        <div>
+                        <!--<label>Re-type Password:</label><br>
+                        <input type="password" name="password2"  placeholder="Password" class="form-control" required/>
+                        </div>-->
+
+                        <input type="checkbox" name="terms" required> <small>I accept <a href="/terms">terms and conditions of Airfree Technologies Limited</a></a><br>
+                        
+                        <input type="submit" class="btn btn-primary" name="login" value="Submit" />
+                   </form>
+                </div>
+                <div class="four columns">
+                    <form method="GET" name="frm" action="/login">                       
+                        <div class="register_block">
+                            Already a user? Go to login.<br>
+                            <input type="submit"  value="Login" class="btn btn-danger"> 
+                        </div><br>
+                    </form>
+                    <!--<form method="GET" name="frm" action="reset.php">
+                        <div class="register_block">
+                            Forgot your password? Reset your password.<br>
+                            <input type="submit" class="reset_btn" value="">
+                        </div>
+                    </form>-->
+                </div>
+            </div>     
+
+
+
+
+
+            </div>
+            <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+            <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+            <script type='text/javascript' src="/assets/js/angular-touch.min.js"></script>   
+            <script type='text/javascript' src="/assets/angular-print/angularPrint.js"></script> 
+
+            <script type='text/javascript' src='/assets/js/cliento.js'></script>
+            <script type='text/javascript' src="/assets/js/ngresource.js"></script>   
+        </body>
+       
+        
+    </html>
+
+
