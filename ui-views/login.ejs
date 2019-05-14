@@ -42,6 +42,22 @@
                     border-radius: 5px;
                 }
 
+                .user-signup {
+                    width: 40%;margin: 20px auto;
+                }
+
+                .user-signup-inner {
+                    line-height:35px;background-color: transparent;padding: 10px;box-shadow: 2px 5px 10px rgba(0,0,0,0.5);
+                }
+               
+
+                @media screen and (max-width: 730px) { 
+                    .user-signup {
+                        width: 100%;
+                        border: none;
+                    }
+                }
+
             </style>
 
             <script type='text/javascript' src='/assets/js/angular-source.js'></script> 
@@ -49,7 +65,7 @@
         </head>
         <body ng-controller="signupController">    
 
-            <div style="width: 40%;margin: 20px auto;">
+            <div class="user-signup">
 
             <div><font style="font-size:22px; font-weight: bold;">Welcome to Airfree Technologies Limited</font></div><br>
 
@@ -58,7 +74,7 @@
             </div><br>
                 
                 
-            <div style="line-height:35px;background-color: transparent;padding: 10px;box-shadow: 2px 5px 10px rgba(0,0,0,0.5);">
+            <div class="user-signup-inner">
                 <div>                     
                     
                     <h4>Sign In</h4><br>
