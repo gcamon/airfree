@@ -48,6 +48,9 @@ module.exports = function(app) {
 	app.route('/signup/:id/:type')
 	.get(core.adminRegister)
 
+	app.route('/auth/logout')
+	.get(core.logout)
+
 	//manage plans
 	app.route('/auth/plans')
 	.get(core.plans)

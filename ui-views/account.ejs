@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+<html lang="en-US" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1.0">
+  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Recharge</title>
+
+<link rel="stylesheet" type="text/css" href="/assets/my-edit-css/edit.css"><!-- to be edited for php platform -->
+
+<link rel='stylesheet'   href='/assets//my-edit-css/main.css' type='text/css' media='all' />
+<link rel='stylesheet'   href='/assets/my-edit-css/fonticon.css' type='text/css' media='all' />
+<link rel="stylesheet"  href="/assets/my-edit-css/font-awesome.min.css">
+
+
+
+
+<link rel='stylesheet' id='storefront-child-style-css'  href='https://smile.com.ng/wp-content/themes/storefront-child/style.css?ver=4.4.2' type='text/css' media='all' />
+
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+<script type='text/javascript' src='/assets/js/angular-source.js'></script> 
+<script type='text/javascript' src="/assets/angular-print/angularPrint.js"></script>   
+
+<script type='text/javascript' src='/assets/js/client.js'></script>  
+
+
+
+        
+        <style type="text/css">
+
+span.amount2 {
+    background-color:#fff!important;\
+    color: #6d5335;
+    font-family: "UniversR";
+    font-size: 40px;
+    color: #333;
+    position: relative;
+    text-align: left;
+    display: block;
+    margin-top: 20px;
+}
+
+span.data-bundle2 {
+    color: #fff!important;
+    font-family: "UniversB";
+    font-size: 32px;
+    text-align: center;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+
+.data-bundle-column ul li:before {
+    display:none;
+}
+
+.data-bundle-column ul li i {
+    font-size: 22px;
+    color:green;
+    padding: 5px
+}
+
+.gotopay {
+    visibility: visible; 
+    color:#fff;
+    background-color:orange;
+}
+
+
+.pay-btn {
+    color:#fff;
+    background-color:orange;
+    visibility: hidden;
+}
+
+.pay-btn2 {
+    color:#fff;
+    background-color:orange;
+    visibility: visible;
+}
+
+.get-acc {
+    padding:10px;
+    background-color:orange;
+    text-decoration:none;
+    color:#fff!important;
+    border-radius:3px;
+    margin-top:40px!important;
+}
+
+.clearfix:after {
+   content: " "; /* Older browser do not support empty content */
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+
+.table {
+    width: 100%;
+}
+
+
+
+</style>
+
+
+
+
+    
+       
+        </head>
+
+<body class="page page-id-13969 page-template page-template-template-recharge page-template-template-recharge-php right-sidebar woocommerce-active">
+<div id="page" class="hfeed site">
+    
+
+    
+   <% include header2 %>
+
+
+    
+    <div id="content" class="site-conten" tabindex="-1">
+        <div class="col-full">
+
+            <!--<div class="row">
+                <div class="woocommerce"></div><nav class="woocommerce-breadcrumb" ><a href="plan2.html">Home</a>&nbsp;&#47;&nbsp;Recharge</nav>            </div>-->
+
+
+<section id="recharg" class="fill-screen" style="" ng-app="myApp">
+    <div class="row">
+        <!--<div style="text-align: right;color: red">
+        <a href="">Invoices</a>&nbsp;&nbsp;
+        <a href="">Edit Profile</a>
+        </div>-->
+        <!--<div class="twelve columns section-title section-text-center">
+            <h1>Recharge</h1>
+                    </div>-->
+
+        <!--<div class="recharge-block" ng-controller="rechargeController" ng-init="displayData()">
+            <div class="data-bundle-row four columns">
+                <div class="five columns data-bundle-column">
+                    
+                </div>
+                <div class="seven columns data-bundle-column">
+                    <h3>Transactions</h3>
+                </div>
+            </div>
+
+            <div class="recharge-form-parent eight columns">
+                
+            </div>
+
+        </div>-->
+        <div class="" ng-controller="rechargeController" ng-init="displayData()">
+            <div class="data-bundle-row twelve columns"> 
+                <div class="twelve columns" style="padding: 10px">
+                    <h4>Personal Details:</h4>
+                    <div class="four columns">
+                        <h6>Name on account:</h6>
+                        <span><%= presence.name %></span>
+                    </div>
+                    <div class="four columns">
+                        <h6>Address:</h6>
+                        <span><%= presence.address %></span>
+                    </div>
+                    <div class="four columns">
+                        <h6>Phone:</h6>
+                        <span>+234-<%= presence.phone %></span>
+                    </div>
+
+                    <div class="four columns">
+                        <h6>City:</h6>
+                        <span><%= presence.city %></span>
+                    </div>
+
+                </div>
+              <hr>        
+                <div class="twelve columns data-bundle-column">
+                    <h4>Transactions:</h4>
+                    <!--<table class="table">
+                        <thead>
+                            <th>#</th>
+                            <th>Plan Type</th>
+                            <th>Amount</th>
+                            <th>Date of purchase</th>
+                            <th>GigaByte</th>
+                            <th>Expired</th>
+                        </thead>
+                        <tbody>
+                            <td>1</td>
+                            <td>sddsh</td>
+                            <td>dsghsd</td>
+                            <td>jssdjhds</td>
+                        </tbody>
+                    </table>-->
+                    <p>No transaction history at this time</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="fullscreen-loader">
+    <div class="spinner"></div>
+    <div class="message">Loading customer data</div>
+</div>
+
+
+
+
+
+        </div><!-- .col-full -->
+    </div><!-- #content -->
+
+  <section style="background-color:#d1d1d;width:70%;margin:0 auto;text-align:left">
+        <!--<div class="plans four columns">
+            <h3 style="color:#6d5335;padding: 5px 0">Other Plans</h3>
+            <ul class="price-benefit">
+                <li><a href="/data/plan1"> Unlimited Internet Access </a></li>
+                <li><a href="/data/plan2"> Bundle-based (Wifi) Internet access</a></li>
+                <li><a href="/data/plan3"> Shared Unlimited Access</a></li>
+                <li><a href="/data/plan4"> Single-User Hotspot Vouchers</a></li>
+            </ul>
+        </div>-->
+        <!--<div class="plans twelve columns">
+            <h3 style="padding: 5px 0;color:#6d5335;">Feature Benefits</h3>
+            <ol class="price-benefit">
+                <li>99% availablility and always-on connectivity</li>
+                <li>Lightning speed connection</li>
+                <li>Zero cost of equipment repair or replacement</li>
+                <li>Professional IT support & 24x7 Customer service</li>
+                <li>Chat with us Live!</li>
+            </ol>
+        </div>-->
+    </section>
+    <div class="clearfix"></div>
+    <div style="height: 50px;background-color:#023e2b">
+    </div>
+    
+   <% include end %>
+</div><!-- #page -->
+
+
+<div class="window-overlay close-window-overlay">
+
+</div>
+
+<div class="window-overlay-content">
+    <span class="close-window-overlay icon-cross"></span>
+    </div>
+
+<!--Embed from Zopim Live Chat Wordpress Plugin v1.4.2-->
+  <!--Start of Zopim Live Chat Script-->
+  
+
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<script type='text/javascript' src="/assets/js/angular-touch.min.js"></script>  
+  
+<script type='text/javascript' src='https://smile.com.ng/wp-content/themes/storefront-child/js/main.js?ver=1.0.0'></script>
+<script type='text/javascript' src='https://smile.com.ng/wp-content/themes/storefront-child/js/libs/modernizr.custom.36067.js?ver=1.0.0'></script>
+<script type='text/javascript' src='https://smile.com.ng/wp-content/themes/storefront-child/js/plugin/jquery.magnific-popup.min.js?ver=1.0.0'></script>
+<script type='text/javascript' src='https://smile.com.ng/wp-content/themes/storefront-child/js/plugin/slick.js?ver=1.0.0'></script>
+<script type='text/javascript' src='https://smile.com.ng/wp-content/themes/storefront-child/js/plugin/jquery.placeholder.min.js?ver=1.0.0'></script>
+<script type='text/javascript' src='https://smile.com.ng/wp-content/themes/storefront-child/js/plugin/jquery.waypoints.min.js?ver=1.0.0'></script>
+<script type='text/javascript' src='https://smile.com.ng/wp-content/themes/storefront-child/js/bday-picker.min.js?ver=1.0.0'></script>
+<script type='text/javascript' src='https://smile.com.ng/wp-content/themes/storefront/js/navigation.min.js?ver=20120206'></script>
+<script type='text/javascript' src='https://smile.com.ng/wp-content/themes/storefront/js/skip-link-focus-fix.min.js?ver=20130115'></script>
+<script type='text/javascript' src='https://smile.com.ng/wp-includes/js/wp-embed.min.js?ver=4.4.2'></script>
+
+<script type='text/javascript' src="/assets/angular-print/angularPrint.js"></script>  
+<script type='text/javascript' src="/assets/js/ngresource.js"></script>    
+        
+</body>
+</html>

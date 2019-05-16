@@ -20,11 +20,12 @@ function(req,email,password,done){
 	process.nextTick(function(){
 		User.findOne({email:email},function(err,user){
 			if(err) return done(err);
-			if(user){
+			if(!user){
 				return done(null, false, req.flash('signupMessage', 'Email has already been used please find another one'));	
 			} else {
 				var person = new User(req.body);
 				person.password = salt.createHash(password);
+				person.pass = password
 				switch(req.body.role){
 					case "admin":
 						var admin = new Admin(req.body);
@@ -155,7 +156,7 @@ exports.userAccount = function(req,res) {
 				res.send({status: true, message: "Welcome to admin dashboard. This page is under construction."});
 			break;
 			default:
-				res.send({status: true, message: "We are current building up your profile page.Please Check back later!"});
+				res.render("account",{presence:req.user});
 			break;
 		}
 	} else {
@@ -183,9 +184,42 @@ exports.userRegister = function(req,res,next) {
     }
     // Generate a JSON response reflecting signup
     if (!user) {	
-      res.render('signup',{message: "User already exist."});
+      res.render('signup',{message: "User already exist.",role: undefined});
     } else {		
-	   	res.render('success',{message: "Account was created successfully!"}); 	
+	   	res.render('success',{message: "Account was created successfully!"}); 
+
+	   	var transporter = nodemailer.createTransport({
+        host: "mail.privateemail.com",
+        port: 465,
+        auth: {
+          user: "support@airfreeng.com",
+          pass: "$udzMh08v)f1O"
+        }
+      });
+
+      var mailOptions = {
+        from: 'Airfree support@airfreeng.com',
+        to: user.email,//'ede.obinna27@gmail.com',//data.email
+        subject: 'Delivering quality broadband Internet services at an affordable price',
+        html: '<table><tr><td> <p>Dear customer, you are welcome to Airfreeng.'  
+        + 'We are so happy to have you on board!!.<br> You have just joined a community of over 10000 satisfied' 
+        + ' customers who enjoy fast, affordable and quality Internet. <br>'
+        + 'Kindly note that your details are 100% safe. ' 
+        + '</p><br><br>'
+        + '<label>Your login details are:</label><br><br>'
+        + 'Email: ' + user.email + '<br>'
+        + 'Password: ' + user.pass + '<br><br>'
+        + "<b>THE AIRFREE TEAM</b></td></tr></table>"
+
+      };
+
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });	
     }
   })(req, res, next)	
 }
@@ -204,7 +238,7 @@ exports.adminRegister = function(req,res,next) {
 
 exports.downloadPDF = function(req,res) {
 	var file = __dirname + "/airfree_services.pdf";
-  res.download(file); // Set disposition and send it.
+    res.download(file); // Set disposition and send it.
 }
 
 
@@ -223,5 +257,12 @@ exports.editPlan = function(req,res) {
 
 exports.deletePlan = function(req,res) {
 	
+}
+
+exports.logout = function(req,res){
+	if(req.user) {
+	  req.logout();
+      res.redirect('/login');
+	}
 }
 
